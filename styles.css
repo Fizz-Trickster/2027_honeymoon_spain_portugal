@@ -752,9 +752,87 @@ body {
   pointer-events: none !important;
 }
 
-.map-marker-label::before,
-.route-line-label::before {
-  display: none !important;
+/* ══════════════════════════════════════════
+   HOTEL RECOMMENDATION CARD STYLES
+══════════════════════════════════════════ */
+.hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+}
+
+.hotel-card {
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--glass-border);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hotel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  border-color: rgba(232, 200, 74, 0.4);
+}
+
+.hc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.hc-city {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--t1);
+}
+
+.hc-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 12px;
+  background: rgba(232, 200, 74, 0.15);
+  color: var(--gold);
+  border: 1px solid rgba(232, 200, 74, 0.3);
+}
+
+.hc-area {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hc-reason {
+  font-size: 0.86rem;
+  color: var(--t2);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.hc-footer {
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+}
+
+.hc-price {
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.hc-sample {
+  color: var(--t3);
 }
 
 /* ══════════════════════════════════════════

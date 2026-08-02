@@ -54,6 +54,74 @@ const ROUTES = [
   }
 ];
 
+// 🏨 도시별 추천 숙소 구역 데이터
+const HOTEL_RECOMMENDATIONS = [
+  {
+    city: "🇦🇪 두바이",
+    area: "비즈니스 베이 (JW 메리어트 마르퀴스)",
+    reason: "Dubai Connect 혜택으로 제공되는 5성급 럭셔리 마천루 호텔. 무료 전용 셔틀, 얼리체크인, 조식 제공 및 사막 투어/부르즈 할리파 이동 용이.",
+    price: "무료 (에미레이트 비즈니스 혜택)",
+    sample: "JW Marriott Marquis Hotel Dubai",
+    lat: 25.1856, lng: 55.2582
+  },
+  {
+    city: "🇪🇸 바르셀로나",
+    area: "에이샴플레 (Eixample) 지구",
+    reason: "바르셀로나에서 치안이 가장 우수하며, 사그라다 파밀리아 & 카사 바트요가 도보권! 격자형 로맨틱 거리와 고풍스러운 4성급 부티크 호텔 밀집.",
+    price: "1박 20~35 만원",
+    sample: "H10 Casa Mimosa / Ohla Eixample",
+    lat: 41.3935, lng: 2.1625
+  },
+  {
+    city: "🇪🇸 발렌시아",
+    area: "구시가지 (Ciutat Vella) / 중앙시장 주변",
+    reason: "원조 빠에야 맛집과 대성당, 세라노스 탑이 도보권에 위치하며 밤에도 활기차고 안전. 미래 예술과학도시(CAC) 버스/트램 이동 매우 편리.",
+    price: "1박 14~24 만원",
+    sample: "Only YOU Hotel Valencia / Vincci Mercat",
+    lat: 39.4740, lng: -0.3780
+  },
+  {
+    city: "🇪🇸 그라나다",
+    area: "누에보 광장 (Plaza Nueva) / 그란비아 축선",
+    reason: "알함브라 궁전 전용 셔틀버스(C30/C32) 출발점이며 알바이신 언덕 입구! 주변에 낭만적인 아랍 차이 하우스와 타파스 바 완벽 형성.",
+    price: "1박 13~22 만원",
+    sample: "Eurostars Catedral / Hotel Anacapri",
+    lat: 37.1770, lng: -3.5975
+  },
+  {
+    city: "🇪🇸 세비야",
+    area: "산타 크루즈 (Santa Cruz) / 대성당 지구",
+    reason: "세비야 대성당, 히랄다 탑, 스페인 광장, 플라멩코 타블라오가 모두 5~10분 도보 거리. 안달루시아 특유의 낭만적인 골목 분위기와 치안 안정.",
+    price: "1박 16~28 만원",
+    sample: "Hotel Fernando III / Petit Palace Santa Cruz",
+    lat: 37.3860, lng: -5.9900
+  },
+  {
+    city: "🇪🇸 마드리드",
+    area: "솔 (Sol) - 아토차 (Atocha) 사이 (Cortes / Retiro)",
+    reason: "AVE 고속열차역(아토차 역) 이동이 매우 용이하며, 프라도 미술관과 레티로 공원이 바로 옆! 치안이 깨끗하고 안전하여 밤 산책에 최적.",
+    price: "1박 18~30 만원",
+    sample: "Only YOU Hotel Atocha / Catalonia Cortes",
+    lat: 40.4125, lng: -3.6930
+  },
+  {
+    city: "🇵🇹 포르투",
+    area: "상벤투 (São Bento) 역 / 히베이라 강변",
+    reason: "야간버스/열차 도착 접근성이 좋고, 동 루이스 1세 다리와 렐루 서점, 포트 와이너리가 모두 도보권! 도루강 석양 뷰를 방에서 조망 가능.",
+    price: "1박 15~26 만원",
+    sample: "Pestana Vintage Porto / Porto Bay Flores",
+    lat: 41.1440, lng: -8.6110
+  },
+  {
+    city: "🇵🇹 리스본",
+    area: "바이샤 (Baixa) - 시아두 (Chiado) 지구",
+    reason: "리스본 평지에 위치하여 캐리어 이동이 수월하고, 28번 트램 출발지 및 호시우 역(신트라 행)이 근접! 쇼핑 및 에그타르트 맛집 도보권.",
+    price: "1박 16~28 만원",
+    sample: "Lisboa Pessoa Hotel / My Story Hotel Ouro",
+    lat: 38.7115, lng: -9.1390
+  }
+];
+
 // 📊 세고비아 & 톨레도 소도시 모두 포함 마스터 데이터
 const MASTER_TABLE_DATA = [
   { day: "DAY 1", date: "3/21 (일)", city: "인천 ➔ 두바이", morning: "12:00 예식 거행 (12:00~15:30) ➔ 16:30 신동탄 롯데캐슬 집 이동 & 짐 챙기기", afternoon: "18:30 에미레이트 쇼퍼서비스 차 ➔ 19:30 ICN 라운지 ➔ 23:40 EK323 탑승 (기내 케이크 & A380 2층 바)", transport: "✈️ EK323 (약 9h 25m)", stay: "기내 (풀플랫 Bed)", transportType: "flight" },
@@ -74,7 +142,7 @@ const MASTER_TABLE_DATA = [
   { day: "DAY 16", date: "4/05 (월)", city: "포르투", morning: "가이아 지구 칼렘/테일러 와이너리 포트 와인 시음 테이스팅", afternoon: "유네스코 세계유산 도루 밸리 포도밭 전통 라벨로 목선 크루즈 ➔ 해산물 국밥(Arroz) 디너", transport: "🛥️ 라벨로 목선 크루즈", stay: "포르투 4성급 (2/3박)" },
   { day: "DAY 17", date: "4/06 (화)", city: "포르투 (마토지뇨스)", morning: "마토지뇨스(Matosinhos) 대서양 해변 산책 & 갓 잡은 대서양 해산물 구이 점심", afternoon: "포르투 역사 카페 '카페 마제스틱' ➔ 자유 쇼핑 & 도루강변 오션뷰 레스토랑 로맨틱 디너", transport: "🚋 트램/도보", stay: "포르투 4성급 (3/3박)" },
   { day: "DAY 18", date: "4/07 (수)", city: "포르투 ➔ 리스본", morning: "포르투 캄파냐 역 ➔ 리스본 AP 고속열차 이동 (약 3시간 소요)", afternoon: "리스본 체크인 후 28번 노랑 트램 알파마 코스 ➔ 상 조르제 성 언덕 일몰 파노라마", transport: "🚆 AP 고속열차 (약 3h)", stay: "리스본 4성급 (1/3박)", transportType: "train" },
-  { day: "DAY 19", date: "4/08 (목)", city: "리스본", morning: "베렘 지구 제로니무스 수도원 & 베렘 탑 대항해 시대 영광 탐방", afternoon: "1837년 창업 원조 에그타르트 Pastéis de Belém ➔ 타구스 강변 오션뷰 루프탑 바 선셋 칵테일", transport: "🚋 트램/도보", stay: "리스본 4성급 (2/3박)" },
+  { day: "DAY 19", date: "4/08 (목)", city: "리스본", morning: "베렘 지구 제로니무스 수도원 & 베렘 탑 대항해 시대 영광 탐방", afternoon: "1837년 원조 에그타르트 Pastéis de Belém ➔ 타구스 강변 오션뷰 루프탑 바 선셋 칵테일", transport: "🚋 트램/도보", stay: "리스본 4성급 (2/3박)" },
   { day: "DAY 20", date: "4/09 (금)", city: "리스본 & 신트라", morning: "신트라 알록달록 페나 궁전 & 레갈레이라 별장 지하우물 탐방 (열차 약 40분 소요)", afternoon: "유럽 대륙 최서단 호카 곶(\"땅이 끝나고 바다가 시작된다\") ➔ 정통 파두(Fado) 와인 작별 디너", transport: "🚆 신트라 열차 (약 40m)", stay: "리스본 4성급 (3/3박)", transportType: "train" },
   { day: "DAY 21", date: "4/10 (토)", city: "리스본 ➔ 두바이", morning: "전문 작가 동행 알파마 지구 신혼 골목 스냅 ➔ 호텔 체크아웃 & LIS 공항 텍스리펀", afternoon: "✈️ 입국 항공편 EK192 탑승 (LIS 14:15 출발 ➔ DXB 00:50 도착, 비행 약 7시간 35분)", transport: "✈️ EK192 (약 7h 35m)", stay: "기내 수면", transportType: "flight" },
   { day: "DAY 22", date: "4/11 (일)", city: "두바이 ➔ 인천", morning: "00:50 두바이 도착 ➔ 비즈니스/이코노미 라운지 및 환승 탑승구 이동", afternoon: "✈️ 입국 항공편 EK322 탑승 (DXB 03:30 출발 ➔ ICN 17:00 도착, 비행 약 8시간 30분)", transport: "✈️ EK322 (약 8h 30m)", stay: "안전한 집 ❤️", transportType: "flight" }
@@ -119,12 +187,12 @@ const ITINERARY = [
     title: "EK255 03:45 출발 ✈️ 08:15 바르셀로나 아침 도착! (3박 4일)",
     tl: [
       { t:"03:45", d:"✈️ EK255 비행기 두바이(DXB) 출발 (03:45, 비행 약 7시간 30분)" },
-      { t:"08:15", d:"스페인 바르셀로나(BCN) 엘프라트 공항 아침 08:15 도착 ➔ 부티크 호텔 짐 보관" },
+      { t:"08:15", d:"스페인 바르셀로나(BCN) 엘프라트 공항 아침 08:15 도착 ➔ 에이샴플레 부티크 호텔 짐 보관" },
       { t:"오전", d:"바르셀로네타 해변 아침 바닷바람 산책 & 지중해 하몽 샌드위치 브런치" },
       { t:"오후", d:"호텔 체크인 후 카사 바트요, 카사 밀라 외관 감상 & 람블라스 거리" },
       { t:"저녁", d:"고딕 지구(Barri Gòtic) 로맨틱 밤 산책 & 상그리아 한 잔으로 스페인 입성 축배" }
     ],
-    tip: "🌅 [이동시간: 비행 7시간 30분] 아침 08:15 도착으로 첫날 하루를 온전히 활용할 수 있는 최적의 시간표!"
+    tip: "🌅 [추천 숙소: 에이샴플레 지구] 치안 우수 & 사그라다 파밀리아/카사 바트요 도보 이동 편리!"
   },
   {
     day: 4, date: "2027-03-24 (수)", city: "barcelona",
@@ -156,10 +224,10 @@ const ITINERARY = [
     title: "지중해 연안 고속열차 Euromed 타고 빠에야의 본고장 발렌시아 입성 (1/2박)",
     tl: [
       { t:"오전", d:"바르셀로나 산츠 역 ➔ 발렌시아 조아킨 소로야 역 Euromed 고속열차 이동 (약 2시간 40분 소요)" },
-      { t:"오후", d:"발렌시아 체크인 ➔ 오렌지 나무가 가득한 중앙 시장(Mercado Central) 탐방" },
+      { t:"오후", d:"발렌시아 구시가지(Ciutat Vella) 호텔 체크인 ➔ 오렌지 나무가 가득한 중앙 시장 탐방" },
       { t:"저녁", d:"중세 세라노스 탑(Torres de Serranos) 야경 관람 & 발렌시아 오렌지 와인" }
     ],
-    tip: "🚆 [신규 추가: 발렌시아 2박] 바르셀로나에서 그라나다로 갈 때 중간에 들르면 동선이 매우 완벽하고 편안해집니다!"
+    tip: "🏨 [추천 숙소: 구시가지/중앙시장] 발렌시아 주요 맛집과 야경 명소가 도보 5분 거리!"
   },
   {
     day: 7, date: "2027-03-27 (토)", city: "valencia",
@@ -180,10 +248,10 @@ const ITINERARY = [
     title: "고속열차 AVE 타고 그라나다 이동 ➔ 알함브라 석양 (1/2박)",
     tl: [
       { t:"오전", d:"발렌시아 조아킨 소로야 역 ➔ 그라나다 역 AVE 고속열차 탑승 (약 3시간 15분 소요)" },
-      { t:"오후", d:"그라나다 도착 & 호텔 체크인 후 피카소 미술관 산책" },
+      { t:"오후", d:"그라나다 누에보 광장 호텔 체크인 ➔ 피카소 미술관 산책" },
       { t:"저녁", d:"산 니콜라스 전망대에서 바라보는 알함브라 궁전 석양 & 무료 타파스 와인" }
     ],
-    tip: "🚆 [이동시간: AVE 기차 약 3시간 15분] 발렌시아에서 그라나다까지 고속열차로 연결되어 편안한 이동!"
+    tip: "🏨 [추천 숙소: 누에보 광장 주변] 알함브라 셔틀과 알바이신 산책로 입구가 바로 앞!"
   },
   {
     day: 9, date: "2027-03-29 (월)", city: "andalucia",
@@ -202,10 +270,10 @@ const ITINERARY = [
     title: "AVE 고속열차 타고 세비야 이동 ➔ 과달키비르 강변 야경 (1/3박)",
     tl: [
       { t:"오전", d:"그라나다 역 ➔ 세비야 산타 후스타 역 AVE 고속열차 이동 (약 2시간 30분 소요)" },
-      { t:"오후", d:"세비야 체크인 후 히랄다 탑 360도 전경 오르기" },
+      { t:"오후", d:"세비야 산타 크루즈 호텔 체크인 ➔ 히랄다 탑 360도 전경 오르기" },
       { t:"저녁", d:"과달키비르(Guadalquivir) 강변 로맨틱 밤 산책 & 야경 보트 투어" }
     ],
-    tip: "🚆 [이동시간: AVE 기차 약 2시간 30분] 세비야 도착 후 첫날은 강변 산책과 낭만 보트로 여유롭게!"
+    tip: "🏨 [추천 숙소: 산타 크루즈 지구] 세비야 대성당, 플라멩코 공연장이 도보 5분 거리!"
   },
   {
     day: 11, date: "2027-03-31 (수)", city: "andalucia",
@@ -236,11 +304,11 @@ const ITINERARY = [
     cityLabel: "세비야 -> 마드리드 ➔ 세고비아 당일치기",
     title: "AVE 타고 마드리드 이동 ➔ 🏰 세고비아 로마 수도교 & 백설공주 성 (1/2박)",
     tl: [
-      { t:"오전", d:"세비야 ➔ 마드리드 아토차 역 AVE 이동 (약 2시간 30분 소요) ➔ 호텔 체크인 후 프라도 미술관" },
+      { t:"오전", d:"세비야 ➔ 마드리드 아토차 역 AVE 이동 (약 2시간 30분 소요) ➔ 아토차 축선 호텔 체크인 후 프라도 미술관" },
       { t:"14:30", d:"🏰 세고비아(Segovia) 고속열차 이동 (약 30분 소요). 2,000년 로마 수도교 감상" },
       { t:"16:30", d:"백설공주 성 모티브 알카사르(Alcázar) 궁전 관람 & 새끼돼지 구이(코치니요) 저녁 ➔ 마드리드 복귀" }
     ],
-    tip: "🏰 [세고비아 완벽 복원!] 마드리드에서 열차로 단 30분 거리! 로마 수도교와 백설공주 성을 완벽하게 다녀옵니다."
+    tip: "🏨 [추천 숙소: 솔-아토차 축선] AVE 기차역 이용이 편리하며 미술관 및 치안 최우수 구역!"
   },
   {
     day: 14, date: "2027-04-03 (토)", city: "madrid",
@@ -260,11 +328,11 @@ const ITINERARY = [
     cityLabel: "포르투 (Porto - 야간버스 도착 - 1/3박)",
     title: "낭만의 도시 포르투 아침 도착! 동 루이스 1세 다리 노을",
     tl: [
-      { t:"오전", d:"포르투 아침 도착 (야간버스 약 7.5h 수면) ➔ 히베이라 도루강변 산책 & 에스프레소 브런치" },
+      { t:"오전", d:"포르투 아침 도착 (야간버스 약 7.5h 수면) ➔ 히베이라 강변 호텔 얼리 체크인/짐보관 ➔ 에스프레소 브런치" },
       { t:"오후", d:"상벤투 역 아줄레주 타일 벽화 & 렐루 서점 입장" },
       { t:"저녁", d:"동 루이스 1세 다리 상층에서 도루강 일몰 노을 & 버스킹 음악 감상" }
     ],
-    tip: "🌅 동 루이스 1세 다리 위에서 바라보는 도루강 일몰은 여행 중 가장 감동적인 낭만 순간 중 하나입니다."
+    tip: "🏨 [추천 숙소: 상벤투 역/히베이라 강변] 야간버스/기차 이동이 편리하고 도루강 석양 조망 우수!"
   },
   {
     day: 16, date: "2027-04-05 (월)", city: "porto",
@@ -296,10 +364,10 @@ const ITINERARY = [
     title: "포르투갈의 수도 리스본 입성! 28번 노랑 트램 (1/3박)",
     tl: [
       { t:"오전", d:"포르투 캄파냐 역 ➔ 리스본 AP 고속열차 이동 (약 3시간 소요)" },
-      { t:"오후", d:"리스본 체크인 후 28번 노랑 트램 타고 알파마 미로 골목 탐방" },
+      { t:"오후", d:"리스본 바이샤-시아두 호텔 체크인 ➔ 28번 노랑 트램 타고 알파마 미로 골목 탐방" },
       { t:"저녁", d:"상 조르제 성 언덕 일몰 파노라마 전경 감상" }
     ],
-    tip: "🚆 [이동시간: AP 고속열차 약 3시간] 포르투에서 리스본까지 고속열차로 쾌적하게 이동!"
+    tip: "🏨 [추천 숙소: 바이샤-시아두 지구] 평지 지형으로 캐리어 이동이 수월하며 대중교통 중심지!"
   },
   {
     day: 19, date: "2027-04-08 (목)", city: "lisbon",
@@ -372,8 +440,13 @@ const CHECKLIST_ITEMS = [
 
 const TIPS = [
   {
+    icon: "fa-hotel",
+    title: "🏨 도시별 가성비 & 낭만 최적 숙소 위치 가이드",
+    text: "각 도시의 치안 상태, 주요 관광지 및 기차역 접근성, 신혼여행 분위기를 모두 고려해 선별한 최적의 구역 정보와 4~5성급 부티크 호텔 정보를 제공합니다."
+  },
+  {
     icon: "fa-castle",
-    title: "🏰 세고비아 (Segovia) 완벽 복원!",
+    title: "🏰 세고비아 (Segovia) 완벽 포함!",
     text: "마드리드 2박 일정 중 Day 13 오후에 열차(30분)로 세고비아를 다녀옵니다! 2,000년 로마 수도교, 백설공주 성 알카사르, 코치니요(새끼돼지 구이)를 모두 즐길 수 있습니다."
   },
   {
@@ -385,11 +458,6 @@ const TIPS = [
     icon: "fa-route",
     title: "🗺️ 지도의 경로 선 상에 이동 소요 시간 표시",
     text: "지도 마커 대신 각 도시를 잇는 이동 노선선(Polyline) 바로 위 경로 중점에 ✈️ 비행, 🚆 고속열차, 🚌 Cama 야간버스의 이동 소요 시간이 상시 명시되어 나타납니다."
-  },
-  {
-    icon: "fa-calculator",
-    title: "💰 예산 산출기 변경 실시간 수식",
-    text: "각 항목의 숫자/슬라이더 값을 조절하면 만원 단위로 총 예상 비용이 즉시 실시간 계산되어 변경됩니다!"
   }
 ];
 
@@ -401,6 +469,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initDDay();
   renderMasterTable();
   renderRouteFlow();
+  renderHotels();
   initInteractiveMap();
   renderItinerary("all");
   initFilterTabs();
@@ -460,6 +529,28 @@ function renderMasterTable() {
       </tr>
     `;
   }).join("");
+}
+
+/* ── Render Hotel Recommendations Grid ── */
+function renderHotels() {
+  const grid = document.getElementById("hotels-grid");
+  if (!grid) return;
+
+  grid.innerHTML = HOTEL_RECOMMENDATIONS.map(h => `
+    <div class="glass hotel-card">
+      <div>
+        <div class="hc-head">
+          <span class="hc-city">${h.city}</span>
+          <span class="hc-badge">${h.price}</span>
+        </div>
+        <div class="hc-area"><i class="fa-solid fa-location-dot"></i> ${h.area}</div>
+        <div class="hc-reason">${h.reason}</div>
+      </div>
+      <div class="hc-footer">
+        <span class="hc-sample">🏨 <strong>추천 4~5성급 예시</strong>: ${h.sample}</span>
+      </div>
+    </div>
+  `).join("");
 }
 
 /* ── Route Flow ── */
@@ -607,7 +698,7 @@ function renderTips() {
   `).join("");
 }
 
-/* ── Interactive Map (Leaflet.js with Route Line Labels & Segovia) ── */
+/* ── Interactive Map (Leaflet.js with Hotel Recommendation Markers & Route Line Labels) ── */
 function initInteractiveMap() {
   const mapContainer = document.getElementById("trip-map");
   if (!mapContainer || typeof L === "undefined") return;
@@ -638,6 +729,7 @@ function initInteractiveMap() {
     { name: "🇵🇹 리스본 (Lisbon)", labelText: "🇵🇹 리스본 (3박 4일)", lat: 38.7223, lng: -9.1393, days: "Day 18~22 (3박 4일)", desc: "28번 노랑 트램, 베렘 에그타르트, 신트라, 파두 ➔ 입국 (EK192 ➔ EK322)", tag: "EK192 -> EK322" }
   ];
 
+  // 1. 관광 도시 핀
   pins.forEach(pin => {
     const marker = L.circleMarker([pin.lat, pin.lng], {
       radius: 8,
@@ -666,6 +758,29 @@ function initInteractiveMap() {
     L.marker([pin.lat, pin.lng], { icon: labelIcon, interactive: false }).addTo(map);
   });
 
+  // 2. 🏨 도시별 추천 숙소 위치 핀 (금빛 마커)
+  HOTEL_RECOMMENDATIONS.forEach(h => {
+    const hotelMarker = L.circleMarker([h.lat, h.lng], {
+      radius: 7,
+      fillColor: "#4ec9b0",
+      color: "#ffffff",
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0.95
+    }).addTo(map);
+
+    const hotelPopupHtml = `
+      <div class="map-popup-card">
+        <h4 style="color:#4ec9b0"><i class="fa-solid fa-bed"></i> ${h.city} 추천 숙소 위치</h4>
+        <div class="mp-days" style="color:#e8c84a">구역: ${h.area}</div>
+        <p>${h.reason}</p>
+        <span class="mp-tag" style="background:rgba(78,201,176,0.2); color:#4ec9b0; border-color:#4ec9b0;">🏨 추천: ${h.sample}</span>
+      </div>
+    `;
+    hotelMarker.bindPopup(hotelPopupHtml);
+  });
+
+  // 🛤️ 이동 경로 및 선(Polyline) 상에 표시될 이동 시간 라벨
   const iberiaRoutes = [
     {
       coords: [[41.3879, 2.1699], [39.4699, -0.3763]],
