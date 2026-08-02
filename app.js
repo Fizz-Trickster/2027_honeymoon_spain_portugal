@@ -836,6 +836,7 @@ function populateMapLayers(mapObj) {
     const labelIcon = L.divIcon({
       className: 'custom-city-marker-box',
       html: labelHtml,
+      iconSize: null,
       iconAnchor: [-10, 10]
     });
     L.marker([pin.lat, pin.lng], { icon: labelIcon, interactive: false }).addTo(mapObj);
@@ -1000,6 +1001,7 @@ function populateMapLayers(mapObj) {
       const lineLabelIcon = L.divIcon({
         className: 'custom-route-time-box',
         html: timeLabelHtml,
+        iconSize: null,
         iconAnchor: [30, 10]
       });
       L.marker(r.midPoint, { icon: lineLabelIcon, interactive: false }).addTo(mapObj);
