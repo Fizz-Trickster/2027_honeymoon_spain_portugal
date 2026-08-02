@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const projectDir = 'c:/Users/yoonys/Desktop/PROJECT/wedding_trip';
+const projectDir = __dirname;
 
 // Read files
 let html = fs.readFileSync(path.join(projectDir, 'index.html'), 'utf8');
