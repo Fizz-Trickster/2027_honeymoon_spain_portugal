@@ -969,30 +969,35 @@ body {
 /* ══════════════════════════════════════════
    LEAFLET DARK MAP CUSTOM STYLES & MAXIMUM READABILITY
 ══════════════════════════════════════════ */
-.map-marker-label {
-  background: #ffffff !important; /* 완전 불투명 선명한 백색 배경 */
-  color: #FF0000 !important; /* 완전 레드 #FF0000 */
-  border: 3px solid #FF0000 !important;
-  padding: 6px 14px !important;
+.map-marker-label,
+.custom-city-marker-box {
+  background: rgba(255, 255, 255, 0.70) !important; /* 흰색 반투명 30% (투명도 0.7) */
+  color: #FF0000 !important;
+  border: 2.5px solid #FF0000 !important;
+  padding: 5px 12px !important;
   border-radius: 20px !important;
-  font-size: 0.95rem !important;
+  font-size: 0.94rem !important;
   font-weight: 900 !important;
   white-space: nowrap !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
-  letter-spacing: -0.3px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   display: inline-block !important;
 }
 
-.route-line-label {
-  background: #ffffff !important; /* 완전 불투명 선명한 백색 배경 */
-  color: #0000FF !important; /* 파란색 #0000FF */
-  border: 2.5px solid #0000FF !important;
-  padding: 5px 12px !important;
+.route-line-label,
+.custom-route-time-box {
+  background: rgba(255, 255, 255, 0.70) !important; /* 흰색 반투명 30% (투명도 0.7) */
+  color: #0000FF !important;
+  border: 2px solid #0000FF !important;
+  padding: 4px 10px !important;
   border-radius: 12px !important;
   font-size: 0.88rem !important;
   font-weight: 900 !important;
   white-space: nowrap !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   display: inline-block !important;
 }
 
