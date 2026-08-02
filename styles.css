@@ -836,6 +836,114 @@ body {
 }
 
 /* ══════════════════════════════════════════
+   FULLSCREEN MAP MODAL STYLES
+══════════════════════════════════════════ */
+.btn-map-expand {
+  background: linear-gradient(135deg, rgba(232, 200, 74, 0.2), rgba(78, 201, 176, 0.2));
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-map-expand:hover {
+  background: var(--gold);
+  color: #0b111e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 200, 74, 0.4);
+}
+
+.map-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(8, 12, 22, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.map-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.map-modal-content {
+  width: 100%;
+  max-width: 1400px;
+  height: 92vh;
+  background: #0f172a;
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+}
+
+.map-modal-header {
+  padding: 16px 24px;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.map-modal-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-close-modal {
+  background: rgba(255,255,255,0.1);
+  color: var(--t1);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-close-modal:hover {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
+}
+
+.modal-trip-map-body {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background: #090d16;
+}
+
+/* ══════════════════════════════════════════
    LEAFLET DARK MAP CUSTOM STYLES
 ══════════════════════════════════════════ */
 .leaflet-popup-content-wrapper {

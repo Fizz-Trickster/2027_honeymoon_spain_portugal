@@ -698,23 +698,55 @@ function renderTips() {
   `).join("");
 }
 
+/* ── Interactive Map Modal Handlers ── */
+let modalMapInstance = null;
+
+window.openMapModal = function openMapModal() {
+  const modal = document.getElementById("map-modal");
+  if (!modal) return;
+
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+
+  if (!modalMapInstance && typeof L !== "undefined") {
+    modalMapInstance = L.map("modal-trip-map", {
+      center: [39.5, -3.5],
+      zoom: 6,
+      zoomControl: true
+    });
+
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      subdomains: "abcd",
+      maxZoom: 19
+    }).addTo(modalMapInstance);
+
+    // Populate pins and routes in modal map
+    populateMapLayers(modalMapInstance);
+  }
+
+  setTimeout(() => {
+    if (modalMapInstance) {
+      modalMapInstance.invalidateSize();
+    }
+  }, 200);
+};
+
+window.closeMapModal = function closeMapModal() {
+  const modal = document.getElementById("map-modal");
+  if (!modal) return;
+  modal.classList.remove("active");
+  document.body.style.overflow = "";
+};
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    window.closeMapModal();
+  }
+});
+
 /* ── Interactive Map (Leaflet.js with Hotel Recommendation Markers & Route Line Labels) ── */
-function initInteractiveMap() {
-  const mapContainer = document.getElementById("trip-map");
-  if (!mapContainer || typeof L === "undefined") return;
-
-  const map = L.map("trip-map", {
-    center: [39.5, -3.5],
-    zoom: 6,
-    zoomControl: true
-  });
-
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: "abcd",
-    maxZoom: 19
-  }).addTo(map);
-
+function populateMapLayers(mapObj) {
   const pins = [
     { name: "🇦🇪 두바이 (DXB)", labelText: "🇦🇪 두바이 (22h40m 레이오버)", lat: 25.2532, lng: 55.3657, days: "3/22(월) 05:05 도착 ~ 3/23(화) 03:45 출발", desc: "JW 메리어트 5성급 1박 무료 & 사막사파리, 아브라, 두바이프레임, 부르즈할리파, 두바이몰 분수쇼", tag: "JW 메리어트 1박" },
     { name: "🇪🇸 바르셀로나 (BCN)", labelText: "🇪🇸 바르셀로나 (3박 4일)", lat: 41.3879, lng: 2.1699, days: "3/23(화) 08:15 도착 ~ 3/26 (3박 4일)", desc: "EK255 08:15 IN. 가우디 건축, 지중해 빠에야, 몬세라트", tag: "EK255 IN (08:15)" },
@@ -738,7 +770,7 @@ function initInteractiveMap() {
       weight: 2,
       opacity: 1,
       fillOpacity: 0.9
-    }).addTo(map);
+    }).addTo(mapObj);
 
     const popupHtml = `
       <div class="map-popup-card">
@@ -755,7 +787,7 @@ function initInteractiveMap() {
       html: pin.labelText,
       iconAnchor: [-10, 10]
     });
-    L.marker([pin.lat, pin.lng], { icon: labelIcon, interactive: false }).addTo(map);
+    L.marker([pin.lat, pin.lng], { icon: labelIcon, interactive: false }).addTo(mapObj);
   });
 
   // 2. 🏨 도시별 추천 숙소 위치 핀 (금빛 마커)
@@ -767,7 +799,7 @@ function initInteractiveMap() {
       weight: 2,
       opacity: 1,
       fillOpacity: 0.95
-    }).addTo(map);
+    }).addTo(mapObj);
 
     const hotelPopupHtml = `
       <div class="map-popup-card">
@@ -844,7 +876,7 @@ function initInteractiveMap() {
       weight: 4,
       opacity: 0.9,
       dashArray: r.dash
-    }).addTo(map);
+    }).addTo(mapObj);
 
     if (r.midPoint && r.timeLabel) {
       const lineLabelIcon = L.divIcon({
@@ -852,7 +884,33 @@ function initInteractiveMap() {
         html: r.timeLabel,
         iconAnchor: [30, 10]
       });
-      L.marker(r.midPoint, { icon: lineLabelIcon, interactive: false }).addTo(map);
+      L.marker(r.midPoint, { icon: lineLabelIcon, interactive: false }).addTo(mapObj);
+    }
+  });
+}
+
+function initInteractiveMap() {
+  const mapContainer = document.getElementById("trip-map");
+  if (!mapContainer || typeof L === "undefined") return;
+
+  const map = L.map("trip-map", {
+    center: [39.5, -3.5],
+    zoom: 6,
+    zoomControl: true
+  });
+
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+    attribution: '&copy; OpenStreetMap &copy; CARTO',
+    subdomains: "abcd",
+    maxZoom: 19
+  }).addTo(map);
+
+  populateMapLayers(map);
+
+  // Allow clicking on map container to open modal as well
+  mapContainer.addEventListener("click", e => {
+    if (!e.target.closest('.leaflet-popup') && !e.target.closest('.leaflet-marker-icon')) {
+      window.openMapModal();
     }
   });
 }

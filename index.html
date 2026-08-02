@@ -232,13 +232,31 @@
       </div>
       <!-- Interactive Map -->
       <div class="map-wrapper" style="margin-top: 40px;">
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
-          <i class="fa-solid fa-map-location-dot"></i> 인터랙티브 루트 지도 (마커 클릭 시 도시별 상세 보기)
-        </h3>
-        <div id="trip-map" style="height: 500px; width: 100%; border-radius: 18px; border: 1px solid var(--glass-border); box-shadow: var(--shadow); z-index: 1;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--gold); margin: 0; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-map-location-dot"></i> 인터랙티브 루트 지도 (마커 클릭 시 도시/숙소 상세 보기)
+          </h3>
+          <button id="open-map-modal-btn" class="btn-map-expand" onclick="window.openMapModal()">
+            <i class="fa-solid fa-expand"></i> 지도를 새 창 / 전체화면으로 크게 보기
+          </button>
+        </div>
+        <div id="trip-map" style="height: 500px; width: 100%; border-radius: 18px; border: 1px solid var(--glass-border); box-shadow: var(--shadow); z-index: 1; cursor: pointer;" title="클릭하면 전체화면 지도로 크게 볼 수 있습니다"></div>
       </div>
     </div>
   </section>
+
+  <!-- ════════════════════ MAP FULLSCREEN MODAL ════════════════════ -->
+  <div id="map-modal" class="map-modal-overlay">
+    <div class="map-modal-content">
+      <div class="map-modal-header">
+        <h3><i class="fa-solid fa-map-location-dot"></i> 2027 신혼여행 전체 경로 & 숙소 지도 (전체화면)</h3>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <button class="btn-close-modal" onclick="window.closeMapModal()"><i class="fa-solid fa-xmark"></i> 닫기 (Esc)</button>
+        </div>
+      </div>
+      <div id="modal-trip-map" class="modal-trip-map-body"></div>
+    </div>
+  </div>
 
   <!-- ════════════════════ HOTEL RECOMMENDATIONS ════════════════════ -->
   <section class="section hotels-section" id="hotels">
