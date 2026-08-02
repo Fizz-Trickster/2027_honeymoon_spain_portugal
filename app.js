@@ -54,7 +54,7 @@ const ROUTES = [
   }
 ];
 
-// 🏨 도시별 추천 숙소 구역 데이터
+// 🏨 도시별 추천 숙소 구역 데이터 (레드 커스텀 반경)
 const HOTEL_RECOMMENDATIONS = [
   {
     city: "🇦🇪 두바이",
@@ -62,7 +62,7 @@ const HOTEL_RECOMMENDATIONS = [
     reason: "Dubai Connect 혜택으로 제공되는 5성급 럭셔리 마천루 호텔. 무료 전용 셔틀, 얼리체크인, 조식 제공 및 사막 투어/부르즈 할리파 이동 용이.",
     price: "무료 (에미레이트 비즈니스 혜택)",
     sample: "JW Marriott Marquis Hotel Dubai",
-    lat: 25.1856, lng: 55.2582
+    lat: 25.1856, lng: 55.2582, radius: 1400
   },
   {
     city: "🇪🇸 바르셀로나",
@@ -70,7 +70,7 @@ const HOTEL_RECOMMENDATIONS = [
     reason: "바르셀로나에서 치안이 가장 우수하며, 사그라다 파밀리아 & 카사 바트요가 도보권! 격자형 로맨틱 거리와 고풍스러운 4성급 부티크 호텔 밀집.",
     price: "1박 20~35 만원",
     sample: "H10 Casa Mimosa / Ohla Eixample",
-    lat: 41.3935, lng: 2.1625
+    lat: 41.3935, lng: 2.1625, radius: 1300
   },
   {
     city: "🇪🇸 발렌시아",
@@ -78,7 +78,7 @@ const HOTEL_RECOMMENDATIONS = [
     reason: "원조 빠에야 맛집과 대성당, 세라노스 탑이 도보권에 위치하며 밤에도 활기차고 안전. 미래 예술과학도시(CAC) 버스/트램 이동 매우 편리.",
     price: "1박 14~24 만원",
     sample: "Only YOU Hotel Valencia / Vincci Mercat",
-    lat: 39.4740, lng: -0.3780
+    lat: 39.4740, lng: -0.3780, radius: 1200
   },
   {
     city: "🇪🇸 그라나다",
@@ -86,7 +86,7 @@ const HOTEL_RECOMMENDATIONS = [
     reason: "알함브라 궁전 전용 셔틀버스(C30/C32) 출발점이며 알바이신 언덕 입구! 주변에 낭만적인 아랍 차이 하우스와 타파스 바 완벽 형성.",
     price: "1박 13~22 만원",
     sample: "Eurostars Catedral / Hotel Anacapri",
-    lat: 37.1770, lng: -3.5975
+    lat: 37.1770, lng: -3.5975, radius: 1100
   },
   {
     city: "🇪🇸 세비야",
@@ -94,7 +94,7 @@ const HOTEL_RECOMMENDATIONS = [
     reason: "세비야 대성당, 히랄다 탑, 스페인 광장, 플라멩코 타블라오가 모두 5~10분 도보 거리. 안달루시아 특유의 낭만적인 골목 분위기와 치안 안정.",
     price: "1박 16~28 만원",
     sample: "Hotel Fernando III / Petit Palace Santa Cruz",
-    lat: 37.3860, lng: -5.9900
+    lat: 37.3860, lng: -5.9900, radius: 1300
   },
   {
     city: "🇪🇸 마드리드",
@@ -102,7 +102,7 @@ const HOTEL_RECOMMENDATIONS = [
     reason: "AVE 고속열차역(아토차 역) 이동이 매우 용이하며, 프라도 미술관과 레티로 공원이 바로 옆! 치안이 깨끗하고 안전하여 밤 산책에 최적.",
     price: "1박 18~30 만원",
     sample: "Only YOU Hotel Atocha / Catalonia Cortes",
-    lat: 40.4125, lng: -3.6930
+    lat: 40.4125, lng: -3.6930, radius: 1350
   },
   {
     city: "🇵🇹 포르투",
@@ -110,7 +110,7 @@ const HOTEL_RECOMMENDATIONS = [
     reason: "야간버스/열차 도착 접근성이 좋고, 동 루이스 1세 다리와 렐루 서점, 포트 와이너리가 모두 도보권! 도루강 석양 뷰를 방에서 조망 가능.",
     price: "1박 15~26 만원",
     sample: "Pestana Vintage Porto / Porto Bay Flores",
-    lat: 41.1440, lng: -8.6110
+    lat: 41.1440, lng: -8.6110, radius: 1200
   },
   {
     city: "🇵🇹 리스본",
@@ -118,7 +118,7 @@ const HOTEL_RECOMMENDATIONS = [
     reason: "리스본 평지에 위치하여 캐리어 이동이 수월하고, 28번 트램 출발지 및 호시우 역(신트라 행)이 근접! 쇼핑 및 에그타르트 맛집 도보권.",
     price: "1박 16~28 만원",
     sample: "Lisboa Pessoa Hotel / My Story Hotel Ouro",
-    lat: 38.7115, lng: -9.1390
+    lat: 38.7115, lng: -9.1390, radius: 1300
   }
 ];
 
@@ -129,23 +129,23 @@ const MASTER_TABLE_DATA = [
   { day: "DAY 3", date: "3/23 (화)", city: "두바이 ➔ 바르셀로나", morning: "EK255 03:45 두바이 출발 ➔ BCN 08:15 아침 도착 (비행 약 7h 30m) ➔ 부티크 호텔 짐보관 ➔ 해변 브런치", afternoon: "호텔 체크인 ➔ 카사 바트요 & 카사 밀라 외관 관람 ➔ 고딕 지구 로맨틱 밤 산책 & 상그리아 축배", transport: "✈️ EK255 (약 7h 30m)", stay: "바르셀로나 4성급 (1/3박)", transportType: "flight" },
   { day: "DAY 4", date: "3/24 (수)", city: "바르셀로나", morning: "사그라다 파밀리아(성가족 성당) 내부 가이드 투어 (스테인드글라스 빛의 향연)", afternoon: "구엘 공원 연인 광장 산책 & 지중해 배경 스냅 ➔ 바르셀로네타 해변 로맨틱 빠에야 디너", transport: "🚋 지하철/도보", stay: "바르셀로나 4성급 (2/3박)" },
   { day: "DAY 5", date: "3/25 (목)", city: "바르셀로나", morning: "몬세라트 절벽 바위산 수도원 산악열차 탑승 & 검은 성모상 참배 (열차 약 1시간 소요)", afternoon: "페네데스 카바 스파클링 와이너리 시음 투어 ➔ 가우디 카사 바트요 내부 ➔ 보케리아 미식 시장", transport: "🚆 산악열차 (약 1h)", stay: "바르셀로나 4성급 (3/3박)", transportType: "train" },
-  { day: "DAY 6", date: "3/26 (금)", city: "바르셀로나 ➔ 발렌시아", morning: "바르셀로나 체크아웃 ➔ 지중해 연안 Euromed 고속열차 탑승 (발렌시아 이동 약 2h 40m)", afternoon: "발렌시아 도착 & 체크인 ➔ 오렌지 나무가 가득한 중앙 시장 & 세라노스 탑 산책", transport: "🚆 Euromed (약 2h 40m)", stay: "발렌시아 4성급 (1/2박)", transportType: "train" },
+  { day: "DAY 6", date: "3/26 (금)", city: "바르셀로나 ➔ 발렌시아", morning: "바르셀로나 체크아웃 ➔ 지중해 연안 Euromed 고속열차 탑승 (발렌시아 이동 약 2h 40m)", afternoon: "발렌시아 구시가지(Ciutat Vella) 호텔 체크인 ➔ 오렌지 나무가 가득한 중앙 시장 탐방", transport: "🚆 Euromed (약 2h 40m)", stay: "발렌시아 4성급 (1/2박)", transportType: "train" },
   { day: "DAY 7", date: "3/27 (토)", city: "발렌시아", morning: "미래 예술과학도시(CAC - City of Arts and Sciences) 하이테크 건축물 탐방", afternoon: "원조 발렌시아 토끼/닭고기 빠에야 점심 ➔ 말바로사(Malvarrosa) 에메랄드 지중해 해변 산책", transport: "🚋 트램/도보", stay: "발렌시아 4성급 (2/2박)" },
-  { day: "DAY 8", date: "3/28 (일)", city: "발렌시아 ➔ 그라나다", morning: "발렌시아 체크아웃 ➔ 그라나다 행 고속열차 AVE 탑승 (약 3시간 15분 소요)", afternoon: "그라나다 도착 & 체크인 ➔ 피카소 미술관 ➔ 산 니콜라스 전망대 알함브라 석양 & 무료 타파스 와인", transport: "🚆 AVE 고속 (약 3h 15m)", stay: "그라나다 4성급 (1/2박)", transportType: "train" },
+  { day: "DAY 8", date: "3/28 (일)", city: "발렌시아 ➔ 그라나다", morning: "발렌시아 체크아웃 ➔ 그라나다 행 고속열차 AVE 탑승 (약 3시간 15분 소요)", afternoon: "그라나다 누에보 광장 호텔 체크인 ➔ 피카소 미술관 산책", transport: "🚆 AVE 고속 (약 3h 15m)", stay: "그라나다 4성급 (1/2박)", transportType: "train" },
   { day: "DAY 9", date: "3/29 (월)", city: "그라나다", morning: "알함브라(Alhambra) 궁전 나스르 궁 & 헤네랄리페 여름 별궁 정원 관람 (시간 엄수)", afternoon: "알바이신 하얀 골목길 아랍 문화 탐방 ➔ 아랍 전통 티하우스 로맨틱 차이 티타임 & 타파스 투어", transport: "🚋 도보/버스", stay: "그라나다 4성급 (2/2박)" },
-  { day: "DAY 10", date: "3/30 (화)", city: "그라나다 ➔ 세비야", morning: "그라나다 역 ➔ 세비야 산타 후스타 역 AVE 고속열차 이동 (약 2시간 30분 소요)", afternoon: "세비야 도착 & 체크인 ➔ 히랄다 탑 360도 전경 ➔ 과달키비르 강변 로맨틱 밤 산책 & 야경 보트", transport: "🚆 AVE 고속 (약 2h 30m)", stay: "세비야 4성급 (1/3박)", transportType: "train" },
-  { day: "DAY 11", date: "3/31 (수)", city: "세비야", morning: "세비야 대성당(세계 3대 고딕) 내부 관람 & 콜럼버스 묘지 참배", afternoon: "스페인 광장 운하에서 로맨틱 보트 뱃놀이 ➔ 정통 타블라오 플라멩코 공연 관람 & 세비야 타파스", transport: "🚋 도보/마차", stay: "세비야 4성급 (2/3박)" },
+  { day: "DAY 10", date: "3/30 (화)", city: "그라나다 ➔ 세비야", morning: "그라나다 역 ➔ 세비야 산타 후스타 역 AVE 고속열차 이동 (약 2시간 30분 소요)", afternoon: "세비야 산타 크루즈 호텔 체크인 ➔ 히랄다 탑 360도 전경 오르기", transport: "🚆 AVE 고속 (약 2h 30m)", stay: "세비야 4성급 (1/3박)", transportType: "train" },
+  { day: "DAY 11", date: "3/31 (수)", city: "세비야", morning: "세비야 대성당(세계 3대 고딕) 내부 관람 & 콜럼버스 묘지 참배", afternoon: "스페인 광장 운하에서 로맨틱 보트 뱃놀이 ➔ 정통 타블라오(Tablao) 플라멩코 공연 관람 & 세비야 타파스", transport: "🚋 도보/마차", stay: "세비야 4성급 (2/3박)" },
   { day: "DAY 12", date: "4/01 (목)", city: "세비야 (론다 당일치기)", morning: "절벽 도시 론다(Ronda) 버스/투어 이동 (약 1시간 40분 소요)", afternoon: "100m 절벽 누에보 다리 절경 감상 & 파라도르 레스토랑 점심 ➔ 세비야 복귀 후 강변 로맨틱 디너", transport: "🚘 투어버스 (약 1h 40m)", stay: "세비야 4성급 (3/3박)" },
-  { day: "DAY 13", date: "4/02 (금)", city: "세비야 ➔ 마드리드 (세고비아)", morning: "세비야 ➔ 마드리드 아토차 행 AVE 이동(2.5h) ➔ 프라도 미술관 관람", afternoon: "🏰 **[소도시1 세고비아]** 열차(30m) 이동 ➔ 2,000년 로마 수도교 & 백설공주 성 알카사르 관람 ➔ 코치니요 저녁 ➔ 마드리드 복귀", transport: "🚆 AVE & 열차 (약 30m)", stay: "마드리드 4성급 (1/2박)", transportType: "train" },
-  { day: "DAY 14", date: "4/03 (토)", city: "마드리드 (톨레도) ➔ 포르투", morning: "🏰 **[소도시2 톨레도]** 마드리드 아토차 역 ➔ UNESCO 세계유산 중세 도시 톨레도 열차 이동 (약 30분)", afternoon: "톨레도 대성당 & 미라도르 델 발레 석양 ➔ 마드리드 복귀 ➔ 23:00 Cama 프리미엄 야간버스 탑승", transport: "🚌 Cama 야간버스 (약 7h 30m)", stay: "야간버스 (숙면1박)", transportType: "bus" },
-  { day: "DAY 15", date: "4/04 (일)", city: "포르투", morning: "포르투 아침 도착 (야간버스 약 7.5h 수면) ➔ 히베이라 도루강변 산책 & 에스프레소 브런치", afternoon: "상벤투 역 아줄레주 타일 벽화 & 렐루 서점 입장", transport: "🚋 도보/트램", stay: "포르투 4성급 (1/3박)" },
-  { day: "DAY 16", date: "4/05 (월)", city: "포르투", morning: "가이아 지구 칼렘/테일러 와이너리 포트 와인 시음 테이스팅", afternoon: "유네스코 세계유산 도루 밸리 포도밭 전통 라벨로 목선 크루즈 ➔ 해산물 국밥(Arroz) 디너", transport: "🛥️ 라벨로 목선 크루즈", stay: "포르투 4성급 (2/3박)" },
+  { day: "DAY 13", date: "4/02 (금)", city: "세비야 ➔ 마드리드 (세고비아)", morning: "세비야 ➔ 마드리드 아토차 행 AVE 이동(2.5h) ➔ 아토차 축선 호텔 체크인 후 프라도 미술관", afternoon: "🏰 **[소도시1 세고비아]** 열차(30m) 이동 ➔ 2,000년 로마 수도교 & 백설공주 성 알카사르 관람 ➔ 코치니요 저녁 ➔ 마드리드 복귀", transport: "🚆 AVE & 열차 (약 30m)", stay: "마드리드 4성급 (1/2박)", transportType: "train" },
+  { day: "DAY 14", date: "4/03 (토)", city: "마드리드 (톨레도) ➔ 포르투", morning: "🏰 **[소도시2 톨레도]** 마드리드 아토차 역 ➔ UNESCO 세계유산 중세 도시 톨레도 열차 이동 (약 30분)", afternoon: "톨레도 대성당 & 미라도르 델 발레 석양 뷰 ➔ 마드리드 복귀 후 짐 정리", transport: "🚌 Cama 야간버스 (약 7h 30m)", stay: "야간버스 (숙면1박)", transportType: "bus" },
+  { day: "DAY 15", date: "4/04 (일)", city: "포르투", morning: "포르투 아침 도착 (야간버스 약 7.5h 수면) ➔ 히베이라 강변 호텔 얼리 체크인/짐보관 ➔ 에스프레소 브런치", afternoon: "상벤투 역 아줄레주 타일 벽화 & 렐루 서점 입장", transport: "🚋 도보/트램", stay: "포르투 4성급 (1/3박)" },
+  { day: "DAY 16", date: "4/05 (월)", city: "포르투", morning: "가이아 지구 칼렘/테일러 와이너리 포트 와인 시음 테이스팅", afternoon: "유네스코 세계유산 도루 밸리 포도밭 전통 라벨로 목선 크루즈 ➔ 해산물 국밥(Arroz de Marisco) 디너", transport: "🛥️ 라벨로 목선 크루즈", stay: "포르투 4성급 (2/3박)" },
   { day: "DAY 17", date: "4/06 (화)", city: "포르투 (마토지뇨스)", morning: "마토지뇨스(Matosinhos) 대서양 해변 산책 & 갓 잡은 대서양 해산물 구이 점심", afternoon: "포르투 역사 카페 '카페 마제스틱' ➔ 자유 쇼핑 & 도루강변 오션뷰 레스토랑 로맨틱 디너", transport: "🚋 트램/도보", stay: "포르투 4성급 (3/3박)" },
-  { day: "DAY 18", date: "4/07 (수)", city: "포르투 ➔ 리스본", morning: "포르투 캄파냐 역 ➔ 리스본 AP 고속열차 이동 (약 3시간 소요)", afternoon: "리스본 체크인 후 28번 노랑 트램 알파마 코스 ➔ 상 조르제 성 언덕 일몰 파노라마", transport: "🚆 AP 고속열차 (약 3h)", stay: "리스본 4성급 (1/3박)", transportType: "train" },
-  { day: "DAY 19", date: "4/08 (목)", city: "리스본", morning: "베렘 지구 제로니무스 수도원 & 베렘 탑 대항해 시대 영광 탐방", afternoon: "1837년 원조 에그타르트 Pastéis de Belém ➔ 타구스 강변 오션뷰 루프탑 바 선셋 칵테일", transport: "🚋 트램/도보", stay: "리스본 4성급 (2/3박)" },
+  { day: "DAY 18", date: "4/07 (수)", city: "포르투 ➔ 리스본", morning: "포르투 캄파냐 역 ➔ 리스본 AP 고속열차 이동 (약 3시간 소요)", afternoon: "리스본 바이샤-시아두 호텔 체크인 ➔ 28번 노랑 트램 타고 알파마 미로 골목 탐방", transport: "🚆 AP 고속열차 (약 3h)", stay: "리스본 4성급 (1/3박)", transportType: "train" },
+  { day: "DAY 19", date: "4/08 (목)", city: "리스본", morning: "베렘 지구 제로니무스 수도원 & 베렘 탑 대항해 시대 영광 탐방", afternoon: "1837년 창업 원조 에그타르트 맛집 Pastéis de Belém ➔ 타구스 강변 오션뷰 루프탑 바 선셋 칵테일", transport: "🚋 트램/도보", stay: "리스본 4성급 (2/3박)" },
   { day: "DAY 20", date: "4/09 (금)", city: "리스본 & 신트라", morning: "신트라 알록달록 페나 궁전 & 레갈레이라 별장 지하우물 탐방 (열차 약 40분 소요)", afternoon: "유럽 대륙 최서단 호카 곶(\"땅이 끝나고 바다가 시작된다\") ➔ 정통 파두(Fado) 와인 작별 디너", transport: "🚆 신트라 열차 (약 40m)", stay: "리스본 4성급 (3/3박)", transportType: "train" },
   { day: "DAY 21", date: "4/10 (토)", city: "리스본 ➔ 두바이", morning: "전문 작가 동행 알파마 지구 신혼 골목 스냅 ➔ 호텔 체크아웃 & LIS 공항 텍스리펀", afternoon: "✈️ 입국 항공편 EK192 탑승 (LIS 14:15 출발 ➔ DXB 00:50 도착, 비행 약 7시간 35분)", transport: "✈️ EK192 (약 7h 35m)", stay: "기내 수면", transportType: "flight" },
-  { day: "DAY 22", date: "4/11 (일)", city: "두바이 ➔ 인천", morning: "00:50 두바이 도착 ➔ 비즈니스/이코노미 라운지 및 환승 탑승구 이동", afternoon: "✈️ 입국 항공편 EK322 탑승 (DXB 03:30 출발 ➔ ICN 17:00 도착, 비행 약 8시간 30분)", transport: "✈️ EK322 (약 8h 30m)", stay: "안전한 집 ❤️", transportType: "flight" }
+  { day: "DAY 22", date: "4/11 (일)", city: "두바이 ➔ 인천", morning: "00:50 두바이 도착 ➔ 비즈니스/이코노미 라운지 휴식 및 EK322 환승 탑승구 이동", afternoon: "✈️ 입국 항공편 EK322 탑승 (DXB 03:30 출발 ➔ ICN 17:00 도착, 비행 약 8시간 30분)", transport: "✈️ EK322 (약 8h 30m)", stay: "안전한 집 ❤️", transportType: "flight" }
 ];
 
 const ITINERARY = [
@@ -304,7 +304,7 @@ const ITINERARY = [
     cityLabel: "세비야 -> 마드리드 ➔ 세고비아 당일치기",
     title: "AVE 타고 마드리드 이동 ➔ 🏰 세고비아 로마 수도교 & 백설공주 성 (1/2박)",
     tl: [
-      { t:"오전", d:"세비야 ➔ 마드리드 아토차 역 AVE 이동 (약 2시간 30분 소요) ➔ 아토차 축선 호텔 체크인 후 프라도 미술관" },
+      { t:"오전", d:"세비야 ➔ 마드리드 아토차 행 AVE 이동(2.5h) ➔ 아토차 축선 호텔 체크인 후 프라도 미술관" },
       { t:"14:30", d:"🏰 세고비아(Segovia) 고속열차 이동 (약 30분 소요). 2,000년 로마 수도교 감상" },
       { t:"16:30", d:"백설공주 성 모티브 알카사르(Alcázar) 궁전 관람 & 새끼돼지 구이(코치니요) 저녁 ➔ 마드리드 복귀" }
     ],
@@ -385,7 +385,7 @@ const ITINERARY = [
     cityLabel: "리스본 & 신트라 (3/3박)",
     title: "동화 속 페나 궁전 & 유럽 대륙의 끝 호카 곶",
     tl: [
-      { t:"오전", d:"신트라 알록달록 페나 궁전 & 레갈레이라 별장 지하우물 탐방 (열차 약 40분)" },
+      { t:"오전", d:"신트라 알록달록 페나 궁전 & 레갈레이라 별장 지하우물 탐방 (열차 약 40분 소요)" },
       { t:"오후", d:"유럽 대륙 최서단 호카 곶(\"땅이 끝나고 바다가 시작된다\") ➔ 정통 파두(Fado) 와인 작별 디너" },
       { t:"저녁", d:"리스본 복귀" }
     ],
@@ -394,7 +394,7 @@ const ITINERARY = [
   {
     day: 21, date: "2027-04-10 (토)", city: "리스본 -> 두바이 (입국: EK192 비행 약 7h 35m)",
     cityLabel: "리스본 -> 두바이 (입국: EK192)",
-    title: "전문 스냅 촬영 ➔ LIS 공항 텍스리펀 ➔ EK192 탑승 귀국길",
+    title: "전문 작가 동행 알파마 지구 신혼 골목 스냅 ➔ 호텔 체크아웃 & LIS 공항 텍스리펀",
     tl: [
       { t:"오전", d:"전문 작가 동행 알파마 지구 신혼 골목 스냅 ➔ 호텔 체크아웃" },
       { t:"11:30", d:"리스본 공항(LIS) 이동 & Global Blue 텍스리펀 서류 승인 및 수령" },
@@ -543,7 +543,7 @@ function renderHotels() {
           <span class="hc-city">${h.city}</span>
           <span class="hc-badge">${h.price}</span>
         </div>
-        <div class="hc-area"><i class="fa-solid fa-location-dot"></i> ${h.area}</div>
+        <div class="hc-area"><i class="fa-solid fa-location-dot" style="color:#ef4444"></i> ${h.area}</div>
         <div class="hc-reason">${h.reason}</div>
       </div>
       <div class="hc-footer">
@@ -744,7 +744,7 @@ document.addEventListener("keydown", e => {
   }
 });
 
-/* ── Interactive Map (Leaflet.js with Hotel Recommendation Markers & Route Line Labels) ── */
+/* ── Interactive Map Layer Populate (Red Radius Circles & Real Route Waypoints) ── */
 function populateMapLayers(mapObj) {
   const pins = [
     { name: "🇦🇪 두바이 (DXB)", labelText: "🇦🇪 두바이 (22h40m 레이오버)", lat: 25.2532, lng: 55.3657, days: "3/22(월) 05:05 도착 ~ 3/23(화) 03:45 출발", desc: "JW 메리어트 5성급 1박 무료 & 사막사파리, 아브라, 두바이프레임, 부르즈할리파, 두바이몰 분수쇼", tag: "JW 메리어트 1박" },
@@ -760,7 +760,7 @@ function populateMapLayers(mapObj) {
     { name: "🇵🇹 리스본 (Lisbon)", labelText: "🇵🇹 리스본 (3박 4일)", lat: 38.7223, lng: -9.1393, days: "Day 18~22 (3박 4일)", desc: "28번 노랑 트램, 베렘 에그타르트, 신트라, 파두 ➔ 입국 (EK192 ➔ EK322)", tag: "EK192 -> EK322" }
   ];
 
-  // 1. 관광 도시 핀
+  // 1. 관광 도시 마커 핀
   pins.forEach(pin => {
     const marker = L.circleMarker([pin.lat, pin.lng], {
       radius: 8,
@@ -789,23 +789,21 @@ function populateMapLayers(mapObj) {
     L.marker([pin.lat, pin.lng], { icon: labelIcon, interactive: false }).addTo(mapObj);
   });
 
-  // 2. 🏨 도시별 추천 숙소 구역 반경 (반짝이는 부드러운 투명 반경 서클 레이어)
+  // 2. 🏨 도시별 추천 숙소 반경 (빨간색 #ef4444 반경 서클 레이어)
   HOTEL_RECOMMENDATIONS.forEach(h => {
-    // 반경 서클 (약 1,200m ~ 1,500m 추천 구역 범주)
     const hotelCircle = L.circle([h.lat, h.lng], {
       radius: h.radius || 1300,
-      color: "#4ec9b0",
-      fillColor: "#4ec9b0",
-      fillOpacity: 0.25,
+      color: "#ef4444",
+      fillColor: "#ef4444",
+      fillOpacity: 0.22,
       weight: 2,
       dashArray: "6, 6"
     }).addTo(mapObj);
 
-    // 반경 중앙 아이콘 핀
     const centerMarker = L.circleMarker([h.lat, h.lng], {
       radius: 5,
       fillColor: "#ffffff",
-      color: "#4ec9b0",
+      color: "#ef4444",
       weight: 2,
       opacity: 1,
       fillOpacity: 1
@@ -813,70 +811,124 @@ function populateMapLayers(mapObj) {
 
     const hotelPopupHtml = `
       <div class="map-popup-card">
-        <h4 style="color:#4ec9b0"><i class="fa-solid fa-bed"></i> ${h.city} 추천 숙소 반경 구역</h4>
+        <h4 style="color:#ef4444"><i class="fa-solid fa-bed"></i> ${h.city} 추천 숙소 반경 구역</h4>
         <div class="mp-days" style="color:#e8c84a">추천 구역: ${h.area} (반경 약 1.3km)</div>
         <p>${h.reason}</p>
-        <span class="mp-tag" style="background:rgba(78,201,176,0.2); color:#4ec9b0; border-color:#4ec9b0;">🏨 4~5성급 추천: ${h.sample}</span>
+        <span class="mp-tag" style="background:rgba(239,68,68,0.2); color:#ef4444; border-color:#ef4444;">🏨 4~5성급 추천: ${h.sample}</span>
       </div>
     `;
     hotelCircle.bindPopup(hotelPopupHtml);
     centerMarker.bindPopup(hotelPopupHtml);
   });
 
-  // 🛤️ 이동 경로 및 선(Polyline) 상에 표시될 이동 시간 라벨
+  // 3. 🛤️ 실제 고속열차 & 도로망 Waypoint 좌표를 따라 이동하는 정밀 노선 선
   const iberiaRoutes = [
     {
-      coords: [[41.3879, 2.1699], [39.4699, -0.3763]],
+      // 바르셀로나 ➔ 발렌시아 (Euromed 지중해 연안 고속철도)
+      coords: [
+        [41.3879, 2.1699],
+        [41.1189, 1.2445], // 타라고나
+        [40.7107, 0.5204], // 델타 데 에브로 연안
+        [39.9864, -0.0513], // 카스텔론
+        [39.4699, -0.3763]  // 발렌시아
+      ],
       color: "#4ec9b0", dash: null,
-      midPoint: [40.4289, 0.8968],
+      midPoint: [40.7107, 0.5204],
       timeLabel: "🚆 Euromed (약 2h 40m)"
     },
     {
-      coords: [[39.4699, -0.3763], [37.1773, -3.5986]],
+      // 발렌시아 ➔ 그라나다 (AVE 고속철도 경로)
+      coords: [
+        [39.4699, -0.3763],
+        [38.9942, -1.8585], // 알바세테
+        [38.0000, -2.5000], // 후안
+        [37.1773, -3.5986]  // 그라나다
+      ],
       color: "#4ec9b0", dash: null,
       midPoint: [38.3236, -1.9874],
       timeLabel: "🚆 AVE (약 3h 15m)"
     },
     {
-      coords: [[37.1773, -3.5986], [37.3891, -5.9845]],
+      // 그라나다 ➔ 세비야 (AVE 고속철도 경로)
+      coords: [
+        [37.1773, -3.5986],
+        [37.0306, -4.5611], // 안테케라
+        [37.2832, -4.7915],
+        [37.3891, -5.9845]  // 세비야
+      ],
       color: "#4ec9b0", dash: null,
-      midPoint: [37.2832, -4.79155],
+      midPoint: [37.1500, -4.5000],
       timeLabel: "🚆 AVE (약 2h 30m)"
     },
     {
-      coords: [[37.3891, -5.9845], [36.7462, -5.1612]],
+      // 세비야 ➔ 론다 (당일치기 버스 도로망)
+      coords: [
+        [37.3891, -5.9845],
+        [37.0676, -5.5728], // 우트레라/에시하 도로
+        [36.7462, -5.1612]  // 론다
+      ],
       color: "#b39ddb", dash: "4,4",
       midPoint: [37.0676, -5.5728],
       timeLabel: "🚘 버스 (약 1h 40m)"
     },
     {
-      coords: [[37.3891, -5.9845], [40.4168, -3.7038]],
+      // 세비야 ➔ 마드리드 (AVE 고속철도 라인)
+      coords: [
+        [37.3891, -5.9845],
+        [37.8882, -4.7794], // 코르도바
+        [38.9863, -3.9271], // 시우다드 레알
+        [40.4168, -3.7038]  // 마드리드
+      ],
       color: "#4ec9b0", dash: null,
-      midPoint: [38.9029, -4.84415],
+      midPoint: [38.5000, -4.3000],
       timeLabel: "🚆 AVE (약 2h 30m)"
     },
     {
-      coords: [[40.4168, -3.7038], [40.9481, -4.1184]],
+      // 마드리드 ➔ 세고비아 (열차)
+      coords: [
+        [40.4168, -3.7038],
+        [40.6558, -3.9926], // 과다라마 터널 구간
+        [40.9481, -4.1184]  // 세고비아
+      ],
       color: "#81c784", dash: "3,3",
       midPoint: [40.6824, -3.9111],
       timeLabel: "🚆 열차 (약 30m)"
     },
     {
-      coords: [[40.4168, -3.7038], [39.8628, -4.0273]],
+      // 마드리드 ➔ 톨레도 (열차)
+      coords: [
+        [40.4168, -3.7038],
+        [40.1398, -3.8655], // 아란후에스 인근
+        [39.8628, -4.0273]  // 톨레도
+      ],
       color: "#81c784", dash: "3,3",
-      midPoint: [40.1398, -3.8655],
+      midPoint: [40.0000, -3.9000],
       timeLabel: "🚆 열차 (약 30m)"
     },
     {
-      coords: [[40.4168, -3.7038], [41.1579, -8.6291]],
+      // 마드리드 ➔ 포르투 (Cama 프리미엄 야간버스 고속도로망)
+      coords: [
+        [40.4168, -3.7038],
+        [40.9688, -5.6639], // 살라망카
+        [40.6010, -7.2660], // 과르다 (포르투갈 국경)
+        [40.6566, -7.9125], // 비세우
+        [41.1579, -8.6291]  // 포르투
+      ],
       color: "#f48fb1", dash: "8,6",
       midPoint: [40.7873, -6.1664],
       timeLabel: "🚌 🌙 Cama 야간버스 (약 7.5h 수면)"
     },
     {
-      coords: [[41.1579, -8.6291], [38.7223, -9.1393]],
+      // 포르투 ➔ 리스본 (AP 고속철도 라인)
+      coords: [
+        [41.1579, -8.6291],
+        [40.6405, -8.6538], // 아베이루
+        [40.2033, -8.4103], // 코임브라
+        [39.2362, -8.6864], // 산타렘
+        [38.7223, -9.1393]  // 리스본
+      ],
       color: "#e8c84a", dash: null,
-      midPoint: [39.9401, -8.8842],
+      midPoint: [40.0000, -8.5000],
       timeLabel: "🚆 AP 고속 (약 3h)"
     }
   ];
