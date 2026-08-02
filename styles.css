@@ -127,7 +127,7 @@ body {
 .nav-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 18px 28px;
+  padding: 14px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -137,9 +137,24 @@ body {
   display: flex; align-items: center; gap: 9px;
   text-decoration: none; color: var(--t1);
   font-family: var(--font-en); font-size: 1.15rem; font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .nav-logo i { color: var(--rose); }
-.nav-menu { display: flex; list-style: none; gap: 28px; }
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 22px;
+  overflow-x: auto;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+.nav-menu::-webkit-scrollbar {
+  display: none;
+}
 .nav-menu a { color: var(--t2); text-decoration: none; font-size: .9rem; font-weight: 500; transition: color .2s; }
 .nav-menu a:hover { color: var(--gold); }
 .nav-dday {
@@ -149,6 +164,7 @@ body {
   padding: 7px 15px; border-radius: 30px;
   font-size: .85rem; font-weight: 700; color: var(--gold);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* ══════════════════════════════════════════
