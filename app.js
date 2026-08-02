@@ -821,7 +821,7 @@ function populateMapLayers(mapObj) {
     centerMarker.bindPopup(hotelPopupHtml);
   });
 
-  // 3. 🛤️ 실제 고속열차 & 도로망 Waypoint 좌표를 따라 이동하는 정밀 노선 선
+  // 3. 🛤️ 실제 고속열차 & 도로망 Waypoint 좌표를 따라 이동하는 정밀 파란색 노선 선 (#2563eb)
   const iberiaRoutes = [
     {
       // 바르셀로나 ➔ 발렌시아 (Euromed 지중해 연안 고속철도)
@@ -832,7 +832,7 @@ function populateMapLayers(mapObj) {
         [39.9864, -0.0513], // 카스텔론
         [39.4699, -0.3763]  // 발렌시아
       ],
-      color: "#4ec9b0", dash: null,
+      color: "#2563eb", dash: null,
       midPoint: [40.7107, 0.5204],
       timeLabel: "🚆 Euromed (약 2h 40m)"
     },
@@ -844,7 +844,7 @@ function populateMapLayers(mapObj) {
         [38.0000, -2.5000], // 후안
         [37.1773, -3.5986]  // 그라나다
       ],
-      color: "#4ec9b0", dash: null,
+      color: "#2563eb", dash: null,
       midPoint: [38.3236, -1.9874],
       timeLabel: "🚆 AVE (약 3h 15m)"
     },
@@ -856,7 +856,7 @@ function populateMapLayers(mapObj) {
         [37.2832, -4.7915],
         [37.3891, -5.9845]  // 세비야
       ],
-      color: "#4ec9b0", dash: null,
+      color: "#2563eb", dash: null,
       midPoint: [37.1500, -4.5000],
       timeLabel: "🚆 AVE (약 2h 30m)"
     },
@@ -867,7 +867,7 @@ function populateMapLayers(mapObj) {
         [37.0676, -5.5728], // 우트레라/에시하 도로
         [36.7462, -5.1612]  // 론다
       ],
-      color: "#b39ddb", dash: "4,4",
+      color: "#3b82f6", dash: "5,5",
       midPoint: [37.0676, -5.5728],
       timeLabel: "🚘 버스 (약 1h 40m)"
     },
@@ -879,7 +879,7 @@ function populateMapLayers(mapObj) {
         [38.9863, -3.9271], // 시우다드 레알
         [40.4168, -3.7038]  // 마드리드
       ],
-      color: "#4ec9b0", dash: null,
+      color: "#2563eb", dash: null,
       midPoint: [38.5000, -4.3000],
       timeLabel: "🚆 AVE (약 2h 30m)"
     },
@@ -890,7 +890,7 @@ function populateMapLayers(mapObj) {
         [40.6558, -3.9926], // 과다라마 터널 구간
         [40.9481, -4.1184]  // 세고비아
       ],
-      color: "#81c784", dash: "3,3",
+      color: "#3b82f6", dash: "4,4",
       midPoint: [40.6824, -3.9111],
       timeLabel: "🚆 열차 (약 30m)"
     },
@@ -901,7 +901,7 @@ function populateMapLayers(mapObj) {
         [40.1398, -3.8655], // 아란후에스 인근
         [39.8628, -4.0273]  // 톨레도
       ],
-      color: "#81c784", dash: "3,3",
+      color: "#3b82f6", dash: "4,4",
       midPoint: [40.0000, -3.9000],
       timeLabel: "🚆 열차 (약 30m)"
     },
@@ -914,7 +914,7 @@ function populateMapLayers(mapObj) {
         [40.6566, -7.9125], // 비세우
         [41.1579, -8.6291]  // 포르투
       ],
-      color: "#f48fb1", dash: "8,6",
+      color: "#2563eb", dash: "8,6",
       midPoint: [40.7873, -6.1664],
       timeLabel: "🚌 🌙 Cama 야간버스 (약 7.5h 수면)"
     },
@@ -927,7 +927,7 @@ function populateMapLayers(mapObj) {
         [39.2362, -8.6864], // 산타렘
         [38.7223, -9.1393]  // 리스본
       ],
-      color: "#e8c84a", dash: null,
+      color: "#2563eb", dash: null,
       midPoint: [40.0000, -8.5000],
       timeLabel: "🚆 AP 고속 (약 3h)"
     }
@@ -936,8 +936,8 @@ function populateMapLayers(mapObj) {
   iberiaRoutes.forEach(r => {
     L.polyline(r.coords, {
       color: r.color,
-      weight: 4,
-      opacity: 0.9,
+      weight: 5,
+      opacity: 0.95,
       dashArray: r.dash
     }).addTo(mapObj);
 

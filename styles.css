@@ -967,54 +967,80 @@ body {
 }
 
 /* ══════════════════════════════════════════
-   LEAFLET DARK MAP CUSTOM STYLES
+   LEAFLET DARK MAP CUSTOM STYLES & MAXIMUM READABILITY
 ══════════════════════════════════════════ */
-.leaflet-popup-content-wrapper {
-  background: rgba(14, 21, 38, 0.95) !important;
-  border: 1px solid rgba(232, 200, 74, 0.4) !important;
-  color: #f1f5f9 !important;
-  border-radius: 14px !important;
-  backdrop-filter: blur(12px) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
-  padding: 4px !important;
+.map-marker-label {
+  background: #0f172a !important;
+  color: #facc15 !important;
+  border: 2px solid #facc15 !important;
+  padding: 4px 10px !important;
+  border-radius: 8px !important;
+  font-size: 0.88rem !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 1) !important;
+  letter-spacing: -0.2px !important;
 }
 
+.route-line-label {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border: 2px solid #2563eb !important;
+  padding: 4px 10px !important;
+  border-radius: 8px !important;
+  font-size: 0.86rem !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 1) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border: 2px solid #2563eb !important;
+  border-radius: 14px !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8) !important;
+  padding: 8px !important;
+}
 
 .leaflet-popup-tip {
-  background: rgba(14, 21, 38, 0.95) !important;
-  border: 1px solid rgba(232, 200, 74, 0.4) !important;
+  background: #0f172a !important;
+  border: 2px solid #2563eb !important;
 }
 
 .map-popup-card h4 {
-  font-family: 'Outfit', 'Noto Sans KR', sans-serif;
-  color: #e8c84a;
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 4px;
+  font-family: 'Outfit', 'Noto Sans KR', sans-serif !important;
+  color: #60a5fa !important;
+  font-size: 1.1rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 6px !important;
 }
 
 .map-popup-card .mp-days {
-  font-size: 0.78rem;
-  color: #60c6f8;
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-size: 0.84rem !important;
+  color: #facc15 !important;
+  font-weight: 800 !important;
+  margin-bottom: 8px !important;
 }
 
 .map-popup-card p {
-  font-size: 0.84rem;
-  color: #94a3b8;
-  line-height: 1.4;
+  font-size: 0.88rem !important;
+  color: #f1f5f9 !important;
+  line-height: 1.5 !important;
+  margin-bottom: 10px !important;
 }
 
 .map-popup-card .mp-tag {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  background: rgba(232, 200, 74, 0.15);
-  color: #e8c84a;
-  border: 1px solid rgba(232, 200, 74, 0.3);
+  display: inline-block !important;
+  margin-top: 4px !important;
+  padding: 4px 10px !important;
+  border-radius: 8px !important;
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  background: rgba(37, 99, 235, 0.25) !important;
+  color: #60a5fa !important;
+  border: 1.5px solid #2563eb !important;
 }
 
