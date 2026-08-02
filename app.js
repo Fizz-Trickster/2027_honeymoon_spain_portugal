@@ -789,26 +789,38 @@ function populateMapLayers(mapObj) {
     L.marker([pin.lat, pin.lng], { icon: labelIcon, interactive: false }).addTo(mapObj);
   });
 
-  // 2. 🏨 도시별 추천 숙소 위치 핀 (금빛 마커)
+  // 2. 🏨 도시별 추천 숙소 구역 반경 (반짝이는 부드러운 투명 반경 서클 레이어)
   HOTEL_RECOMMENDATIONS.forEach(h => {
-    const hotelMarker = L.circleMarker([h.lat, h.lng], {
-      radius: 7,
+    // 반경 서클 (약 1,200m ~ 1,500m 추천 구역 범주)
+    const hotelCircle = L.circle([h.lat, h.lng], {
+      radius: h.radius || 1300,
+      color: "#4ec9b0",
       fillColor: "#4ec9b0",
-      color: "#ffffff",
+      fillOpacity: 0.25,
+      weight: 2,
+      dashArray: "6, 6"
+    }).addTo(mapObj);
+
+    // 반경 중앙 아이콘 핀
+    const centerMarker = L.circleMarker([h.lat, h.lng], {
+      radius: 5,
+      fillColor: "#ffffff",
+      color: "#4ec9b0",
       weight: 2,
       opacity: 1,
-      fillOpacity: 0.95
+      fillOpacity: 1
     }).addTo(mapObj);
 
     const hotelPopupHtml = `
       <div class="map-popup-card">
-        <h4 style="color:#4ec9b0"><i class="fa-solid fa-bed"></i> ${h.city} 추천 숙소 위치</h4>
-        <div class="mp-days" style="color:#e8c84a">구역: ${h.area}</div>
+        <h4 style="color:#4ec9b0"><i class="fa-solid fa-bed"></i> ${h.city} 추천 숙소 반경 구역</h4>
+        <div class="mp-days" style="color:#e8c84a">추천 구역: ${h.area} (반경 약 1.3km)</div>
         <p>${h.reason}</p>
-        <span class="mp-tag" style="background:rgba(78,201,176,0.2); color:#4ec9b0; border-color:#4ec9b0;">🏨 추천: ${h.sample}</span>
+        <span class="mp-tag" style="background:rgba(78,201,176,0.2); color:#4ec9b0; border-color:#4ec9b0;">🏨 4~5성급 추천: ${h.sample}</span>
       </div>
     `;
-    hotelMarker.bindPopup(hotelPopupHtml);
+    hotelCircle.bindPopup(hotelPopupHtml);
+    centerMarker.bindPopup(hotelPopupHtml);
   });
 
   // 🛤️ 이동 경로 및 선(Polyline) 상에 표시될 이동 시간 라벨
