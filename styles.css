@@ -1032,3 +1032,47 @@ body {
   border: 1.5px solid #f59e0b !important;
 }
 
+/* GitHub Link & Button Styles */
+.nav-gh-link {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--t1) !important;
+  padding: 5px 12px !important;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.nav-gh-link:hover {
+  background: #ffffff !important;
+  color: #0b111e !important;
+}
+
+.btn-gh {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-gh:hover {
+  background: #ffffff;
+  color: #0b111e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+}
+
+.footer-gh-link {
+  margin: 10px 0;
+  font-size: 0.9rem;
+}
+
+.footer-gh-link a {
+  color: var(--gold);
+  text-decoration: underline;
+  word-break: break-all;
+  transition: color 0.2s ease;
+}
+
+.footer-gh-link a:hover {
+  color: #ffffff;
+}
+
