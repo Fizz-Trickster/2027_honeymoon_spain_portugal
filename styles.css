@@ -854,6 +854,29 @@ body {
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
+.btn-gmap-link {
+  background: linear-gradient(135deg, #4285F4, #34A853);
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+}
+
+.btn-gmap-link:hover {
+  background: linear-gradient(135deg, #3367D6, #2E7D32);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(66, 133, 244, 0.5);
+}
+
 .btn-map-expand:hover {
   background: var(--gold);
   color: #0b111e;

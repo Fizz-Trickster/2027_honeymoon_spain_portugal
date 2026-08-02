@@ -715,9 +715,8 @@ window.openMapModal = function openMapModal() {
       zoomControl: true
     });
 
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-      attribution: '&copy; OpenStreetMap &copy; CARTO',
-      subdomains: "abcd",
+    L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
+      attribution: '&copy; <a href="https://maps.google.com">Google Maps</a>',
       maxZoom: 19
     }).addTo(modalMapInstance);
 
@@ -899,9 +898,8 @@ function initInteractiveMap() {
     zoomControl: true
   });
 
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; OpenStreetMap &copy; CARTO',
-    subdomains: "abcd",
+  L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
+    attribution: '&copy; <a href="https://maps.google.com">Google Maps</a>',
     maxZoom: 19
   }).addTo(map);
 
