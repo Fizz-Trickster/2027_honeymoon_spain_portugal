@@ -715,8 +715,8 @@ window.openMapModal = function openMapModal() {
       zoomControl: true
     });
 
-    L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
-      attribution: '&copy; <a href="https://maps.google.com">Google Maps</a>',
+    L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&hl=ko&gl=kr", {
+      attribution: '&copy; <a href="https://maps.google.com">Google Maps (한국어)</a>',
       maxZoom: 19
     }).addTo(modalMapInstance);
 
@@ -962,8 +962,8 @@ function initInteractiveMap() {
     zoomControl: true
   });
 
-  L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
-    attribution: '&copy; <a href="https://maps.google.com">Google Maps</a>',
+  L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&hl=ko&gl=kr", {
+    attribution: '&copy; <a href="https://maps.google.com">Google Maps (한국어)</a>',
     maxZoom: 19
   }).addTo(map);
 
