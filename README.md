@@ -43,9 +43,26 @@ wedding_trip/
 
 ---
 
+## 📥 저장소 가져오기 (GitHub Clone)
+
+새로운 PC에서 이 프로젝트를 내려받아 작업하려면 아래 명령어를 실행합니다:
+
+1. **Git 설치**: [Git 공식 홈페이지](https://git-scm.com/)에서 PC 환경에 맞는 Git을 설치합니다.
+2. **저장소 복제**:
+   ```bash
+   git clone https://github.com/Fizz-Trickster/2027_honeymoon_spain_portugal.git
+   ```
+3. **프로젝트 폴더로 이동**:
+   ```bash
+   cd 2027_honeymoon_spain_portugal
+   ```
+
+---
+
 ## 🚀 로컬 실행 방법
 
 Node.js 환경에서 간단한 서버나 브라우저로 실행할 수 있습니다:
+
 
 ```bash
 # 8080 포트로 실행 시
