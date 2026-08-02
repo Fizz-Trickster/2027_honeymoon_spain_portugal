@@ -540,11 +540,11 @@ function renderBudget() {
 
 window.calcTotal = function calcTotal() {
   let total = 0;
-  BUDGET_ITEMS.forEach(item => {
-    const el = document.getElementById(item.id);
-    if (el) {
-      const val = parseInt(el.value, 10);
-      if (!isNaN(val)) total += val;
+  const inputs = document.querySelectorAll("#calc-list input");
+  inputs.forEach(input => {
+    const val = parseFloat(input.value);
+    if (!isNaN(val)) {
+      total += val;
     }
   });
   const display = document.getElementById("total-display");
