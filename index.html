@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2027 신혼여행 플랜 | 두바이 22h 레이오버 → 바르셀로나 IN → 리스본 OUT</title>
+  <meta name="description" content="2027년 3월 21일 결혼식 직후 출발하는 3주간의 로맨틱 신혼여행 플랜. 에미레이트 항공 비즈니스 클래스 탑승, 쇼퍼 서비스, 두바이 커넥트 JW 메리어트 마르퀴스 5성급 1박, 스페인·포르투갈 완벽 루트." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Leaflet.js for Interactive Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ════════════════════ NAV ════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero">
+        <i class="fa-solid fa-heart"></i>
+        <span>Romantic Odyssey 2027</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#overview">개요</a></li>
+        <li><a href="#flight">항공 혜택</a></li>
+        <li><a href="#master-table">종합 일정표</a></li>
+        <li><a href="#route">루트 지도</a></li>
+        <li><a href="#itinerary">상세 일자별 카드</a></li>
+        <li><a href="#budget">예산</a></li>
+        <li><a href="#tips">꿀팁</a></li>
+      </ul>
+      <div class="nav-dday" id="nav-dday">
+        <i class="fa-regular fa-clock"></i>
+        <span id="dday-text">로딩 중…</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════════════ HERO ════════════════════ -->
+  <header class="hero" id="hero">
+    <div class="hero-video-bg">
+      <img src="assets/wedding_trip_hero_1785060680546.png" alt="신혼여행 배경" class="hero-bg-img" />
+      <div class="hero-gradient"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag">
+        <i class="fa-solid fa-ring"></i>
+        2027.03.21(일) 예식(12:00) 후 출발 · 에미레이트 비즈니스 클래스 (EK323 / EK255)
+      </div>
+      <h1 class="hero-title">
+        중동의 화려함과<br />
+        <span class="grad-text">이베리아 반도의 낭만</span>
+      </h1>
+      <p class="hero-sub">
+        🇦🇪 두바이 22h 40m 레이오버 (JW 메리어트 1박) &nbsp;→&nbsp; 🇪🇸 바르셀로나 08:15 IN &nbsp;→&nbsp; 🇪🇸 스페인 기차·버스 여행 &nbsp;→&nbsp;
+        🇵🇹 리스본 OUT &nbsp;|&nbsp; 3주 22일
+      </p>
+      <div class="hero-stats-row">
+        <div class="hstat">
+          <span class="hstat-val">22일</span>
+          <span class="hstat-lbl">총 여행 기간</span>
+        </div>
+        <div class="hstat">
+          <span class="hstat-val">3개국</span>
+          <span class="hstat-lbl">UAE · 스페인 · 포르투갈</span>
+        </div>
+        <div class="hstat">
+          <span class="hstat-val">7개 도시</span>
+          <span class="hstat-lbl">두바이·바르셀로나·그라나다·세비야·마드리드·포르투·리스본</span>
+        </div>
+        <div class="hstat">
+          <span class="hstat-val">쇼퍼서비스</span>
+          <span class="hstat-lbl">신동탄 롯데캐슬 ➔ ICN 픽업</span>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a href="#master-table" class="btn btn-gold"><i class="fa-solid fa-table-cells"></i> 한눈에 보는 종합표</a>
+        <a href="#flight" class="btn btn-ghost"><i class="fa-solid fa-plane"></i> 항공 혜택 및 편명</a>
+      </div>
+    </div>
+    <div class="scroll-hint"><i class="fa-solid fa-chevron-down"></i></div>
+  </header>
+
+  <!-- ════════════════════ OVERVIEW PILLS ════════════════════ -->
+  <section class="section pills-section" id="overview">
+    <div class="container">
+      <div class="pills-row">
+        <div class="pill"><i class="fa-solid fa-plane-departure"></i> 출국: EK323 (ICN 23:40) ➔ EK255 (BCN 08:15)</div>
+        <div class="pill"><i class="fa-solid fa-plane-arrival"></i> 입국: EK192 (LIS 14:15) ➔ EK322 (ICN 17:00)</div>
+        <div class="pill"><i class="fa-solid fa-moon"></i> 21박 22일</div>
+        <div class="pill"><i class="fa-solid fa-car-side"></i> 쇼퍼 서비스 (신동탄 롯데캐슬 ➔ ICN)</div>
+        <div class="pill"><i class="fa-solid fa-hotel"></i> JW 메리어트 마르퀴스 두바이 1박 무료</div>
+        <div class="pill"><i class="fa-solid fa-train"></i> 스페인 내 이동: AVE 열차 & Cama 야간버스</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ FLIGHT HIGHLIGHT ════════════════════ -->
+  <section class="section flight-section" id="flight">
+    <div class="container">
+      <div class="section-head">
+        <span class="sh-label">FLIGHT PLAN</span>
+        <h2 class="sh-title"><i class="fa-solid fa-plane"></i> 에미레이트 항공 운항 편명 및 프리미엄 혜택</h2>
+        <p class="sh-sub">출국 비즈니스 (EK323 / EK255) + 입국 이코노미 (EK192 / EK322) 완벽 조화</p>
+      </div>
+
+      <div class="flight-grid">
+
+        <!-- Outbound -->
+        <div class="flight-card business">
+          <div class="fc-badge"><i class="fa-solid fa-crown"></i> 출국 항공편 (EK323 ➔ EK255)</div>
+          <div class="fc-route">
+            <div class="fc-city">ICN<br /><small>인천 23:40</small></div>
+            <div class="fc-arrow">
+              <span class="fc-line"></span>
+              <i class="fa-solid fa-plane"></i>
+              <span class="fc-line"></span>
+            </div>
+            <div class="fc-city">DXB<br /><small>두바이 05:05</small></div>
+            <div class="fc-arrow">
+              <span class="fc-line"></span>
+              <i class="fa-solid fa-plane"></i>
+              <span class="fc-line"></span>
+            </div>
+            <div class="fc-city">BCN<br /><small>바르셀로나 08:15</small></div>
+          </div>
+          <ul class="fc-benefits">
+            <li><i class="fa-solid fa-car-side"></i> <strong>쇼퍼 서비스 무료</strong> (신동탄 롯데캐슬 ➔ ICN 2터미널)</li>
+            <li><i class="fa-solid fa-martini-glass"></i> 인천공항 비즈니스 라운지 조기입장 (샤워/뷔페/샴페인)</li>
+            <li><i class="fa-solid fa-cake-candles"></i> 기내 허니문 전용 케이크 & 와인 쿠폰 신청</li>
+            <li><i class="fa-solid fa-glass-water"></i> A380 2층 어퍼덱 비즈니스 전용 바 라운지</li>
+            <li><i class="fa-solid fa-bed"></i> A380 180도 풀플랫 78인치 침대 좌석 (EK323)</li>
+          </ul>
+          <div class="fc-date">3/21 23:40 출발 ➔ 3/23 08:15 바르셀로나 도착</div>
+        </div>
+
+        <!-- Dubai Connect -->
+        <div class="flight-card dubai-connect">
+          <div class="fc-badge star"><i class="fa-solid fa-star"></i> DUBAI CONNECT (22h 40m)</div>
+          <div class="dubai-connect-icon">
+            <img src="assets/dubai_view_1785060693675.png" alt="두바이" />
+            <div class="dubai-connect-overlay">
+              <span class="dc-hours">22h 40m</span>
+              <span class="dc-label">JW 메리어트 마르퀴스 1박</span>
+            </div>
+          </div>
+          <ul class="fc-benefits">
+            <li><i class="fa-solid fa-hotel"></i> <strong>5성급 JW 메리어트 마르퀴스 1박 무료</strong></li>
+            <li><i class="fa-solid fa-shuttle-van"></i> 공항↔호텔 무료 전용 셔틀 버스</li>
+            <li><i class="fa-solid fa-utensils"></i> 호텔 조식 뷔페 & 식사 무료</li>
+            <li><i class="fa-solid fa-compass"></i> 사막 사파리, 부르즈 할리파, 두바이몰 분수쇼</li>
+            <li><i class="fa-solid fa-triangle-exclamation" style="color:#facc15"></i> 출발 24시간 전 Manage Booking 신청!</li>
+          </ul>
+          <div class="fc-date">3/22(월) 05:05 도착 ~ 3/23(화) 03:45 출발</div>
+        </div>
+
+        <!-- Inbound -->
+        <div class="flight-card economy">
+          <div class="fc-badge eco"><i class="fa-solid fa-leaf"></i> 입국 항공편 (EK192 ➔ EK322)</div>
+          <div class="fc-route">
+            <div class="fc-city">LIS<br /><small>리스본 14:15</small></div>
+            <div class="fc-arrow">
+              <span class="fc-line"></span>
+              <i class="fa-solid fa-plane"></i>
+              <span class="fc-line"></span>
+            </div>
+            <div class="fc-city">DXB<br /><small>두바이 00:50</small></div>
+            <div class="fc-arrow">
+              <span class="fc-line"></span>
+              <i class="fa-solid fa-plane"></i>
+              <span class="fc-line"></span>
+            </div>
+            <div class="fc-city">ICN<br /><small>인천 17:00</small></div>
+          </div>
+          <ul class="fc-benefits">
+            <li><i class="fa-solid fa-plane-departure"></i> <strong>EK192</strong>: LIS 14:15 출발 ➔ DXB 00:50 도착</li>
+            <li><i class="fa-solid fa-plane-arrival"></i> <strong>EK322</strong>: DXB 03:30 출발 ➔ ICN 17:00 도착</li>
+            <li><i class="fa-solid fa-piggy-bank"></i> 왕복 비즈니스 대비 약 200만원 예산 절감</li>
+            <li><i class="fa-solid fa-suitcase-rolling"></i> 수하물 허용량 30kg & ICE 엔터테인먼트</li>
+          </ul>
+          <div class="fc-date">4/10(토) 14:15 리스본 출발 ➔ 4/11(일) 17:00 인천 도착</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ MASTER OVERVIEW TABLE ════════════════════ -->
+  <section class="section table-section" id="master-table">
+    <div class="container">
+      <div class="section-head">
+        <span class="sh-label">VISUAL SUMMARY</span>
+        <h2 class="sh-title"><i class="fa-solid fa-table-cells"></i> 한눈에 보는 3주 여정 종합표</h2>
+        <p class="sh-sub">22일간의 일차, 날짜, 도시, 주요 일정, 이동 수단, 숙박을 한눈에 스캔하세요</p>
+      </div>
+
+      <div class="table-responsive glass">
+        <table class="master-table">
+          <thead>
+            <tr>
+              <th>일차</th>
+              <th>날짜 (요일)</th>
+              <th>도시/국가</th>
+              <th>☀️ 오전 주요 일정</th>
+              <th>🌙 오후 / 저녁 주요 일정</th>
+              <th>이동 수단</th>
+              <th>숙박 / 비고</th>
+            </tr>
+          </thead>
+          <tbody id="master-table-body">
+            <!-- JS dynamic rendering -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ ROUTE TIMELINE & MAP ════════════════════ -->
+  <section class="section route-section" id="route">
+    <div class="container">
+      <div class="section-head">
+        <span class="sh-label">TRAVEL ROUTE</span>
+        <h2 class="sh-title"><i class="fa-solid fa-route"></i> 3주간의 로맨틱 여정 루트</h2>
+        <p class="sh-sub">동쪽에서 서쪽으로 이동하며 문화·자연·낭만을 한꺼번에 만끽하는 최적 동선</p>
+      </div>
+      <div class="route-flow" id="route-flow">
+        <!-- JS 렌더링 -->
+      </div>
+      <!-- Interactive Map -->
+      <div class="map-wrapper" style="margin-top: 40px;">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-map-location-dot"></i> 인터랙티브 루트 지도 (마커 클릭 시 도시별 상세 보기)
+        </h3>
+        <div id="trip-map" style="height: 500px; width: 100%; border-radius: 18px; border: 1px solid var(--glass-border); box-shadow: var(--shadow); z-index: 1;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ ITINERARY ════════════════════ -->
+  <section class="section itinerary-section" id="itinerary">
+    <div class="container">
+      <div class="section-head">
+        <span class="sh-label">DAY BY DAY</span>
+        <h2 class="sh-title"><i class="fa-solid fa-calendar-check"></i> 상세 Day-by-Day 카드 일정표</h2>
+        <p class="sh-sub">도시별 탭으로 원하는 일정을 자유롭게 필터링하여 상세 시간표를 확인해보세요</p>
+      </div>
+      <div class="filter-bar">
+        <button class="flt active" data-filter="all">전체</button>
+        <button class="flt" data-filter="dubai">🇦🇪 두바이</button>
+        <button class="flt" data-filter="barcelona">🇪🇸 바르셀로나</button>
+        <button class="flt" data-filter="valencia">🇪🇸 발렌시아</button>
+        <button class="flt" data-filter="andalucia">🇪🇸 안달루시아</button>
+        <button class="flt" data-filter="madrid">🇪🇸 마드리드</button>
+        <button class="flt" data-filter="porto">🇵🇹 포르투</button>
+        <button class="flt" data-filter="lisbon">🇵🇹 리스본</button>
+      </div>
+      <div class="cards-grid" id="cards-grid">
+        <!-- JS 렌더링 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ BUDGET ════════════════════ -->
+  <section class="section budget-section" id="budget">
+    <div class="container">
+      <div class="section-head">
+        <span class="sh-label">BUDGET PLANNER</span>
+        <h2 class="sh-title"><i class="fa-solid fa-coins"></i> 예산 플래너 & 체크리스트</h2>
+        <p class="sh-sub">2인 기준 예상 비용을 직접 조절하며 나에게 맞는 예산을 산출해보세요</p>
+      </div>
+      <div class="budget-wrap">
+        <!-- Calculator -->
+        <div class="glass budget-calc">
+          <h3><i class="fa-solid fa-calculator"></i> 예산 산출기 <small>(만원 단위, 2인 합계)</small></h3>
+          <div class="calc-list" id="calc-list">
+            <!-- JS 렌더링 -->
+          </div>
+          <div class="calc-total">
+            <span>총 예상 비용</span>
+            <strong id="total-display">–</strong>
+          </div>
+          <p class="calc-note">※ 쇼퍼서비스 무료 & 두바이 커넥트 혜택 적용으로 약 100만원 이상 절감 효과!</p>
+        </div>
+        <!-- Checklist -->
+        <div class="glass checklist">
+          <h3><i class="fa-solid fa-list-check"></i> 출발 전 필수 체크리스트</h3>
+          <ul class="check-items" id="check-items">
+            <!-- JS 렌더링 -->
+          </ul>
+          <div class="progress-wrap">
+            <span>준비 현황</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <span id="progress-pct">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ TIPS ════════════════════ -->
+  <section class="section tips-section" id="tips">
+    <div class="container">
+      <div class="section-head">
+        <span class="sh-label">PRO TIPS</span>
+        <h2 class="sh-title"><i class="fa-solid fa-lightbulb"></i> 신혼여행 성공 꿀팁</h2>
+        <p class="sh-sub">스페인·포르투갈 이동 및 에미레이트 항공 프리미엄 혜택 가이드</p>
+      </div>
+      <div class="tips-grid" id="tips-grid">
+        <!-- JS 렌더링 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ FOOTER ════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-heart">💍 2027 Romantic Honeymoon — 두바이 · 스페인 · 포르투갈 3주 완벽 플랜</p>
+      <p class="footer-copy">Designed with ❤️ by Antigravity</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
